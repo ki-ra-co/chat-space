@@ -1,5 +1,5 @@
 current directory: /Users/kiraco/projects/chat-space/desktop/ruby_lesson/ruby/2.5.0/gems/ffi-1.12.1/ext/ffi_c
-/Users/kiraco/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200121-61609-1u97snt.rb extconf.rb
+/Users/kiraco/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200121-79731-1xrlbpj.rb extconf.rb
 checking for ffi.h... no
 checking for ffi.h in /usr/local/include,/usr/include/ffi... no
 checking for shlwapi.h... no
@@ -138,4 +138,4 @@ compiling Types.c
 compiling Variadic.c
 compiling ffi.c
 linking shared-object ffi_c.bundle
-/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20200121-61609-gtc13q
+/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20200121-79731-1bqf1kb

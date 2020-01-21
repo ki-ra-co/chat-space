@@ -1,5 +1,5 @@
 current directory: /Users/kiraco/projects/chat-space/desktop/ruby_lesson/ruby/2.5.0/gems/byebug-11.1.0/ext/byebug
-/Users/kiraco/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200121-61609-11uhfj3.rb extconf.rb
+/Users/kiraco/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200121-79731-145qyl9.rb extconf.rb
 creating Makefile
 
 current directory: /Users/kiraco/projects/chat-space/desktop/ruby_lesson/ruby/2.5.0/gems/byebug-11.1.0/ext/byebug
@@ -16,4 +16,4 @@ linking shared-object byebug/byebug.bundle
 
 current directory: /Users/kiraco/projects/chat-space/desktop/ruby_lesson/ruby/2.5.0/gems/byebug-11.1.0/ext/byebug
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20200121-61609-3epzbt/byebug
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20200121-79731-1iu2i62/byebug
