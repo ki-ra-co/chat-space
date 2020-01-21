@@ -1,0 +1,39 @@
+%body
+  .chat__main
+    .chat__main__group-info
+      .chat__main__group-info__left
+        %h1.chat__main__group-info__left_top
+          test
+        %p.chat__main__group-info__left_bottom
+          member:kk
+      .chat__main__group-info__right
+        %a.chat__main__group-info__right_edit
+          Edit
+    .chat__main__message-list
+      .chat__main__message-list__container
+        .chat__main__message-list__container__top
+          .chat__main__message-list__container__top_name
+            %p kk
+          .chat__main__message-list__container__top_daytime
+            %p 2019/11/20(wed) 17:43:01
+        .chat__main__message-list__container__bottom
+          %p おはよう！
+      .chat__main__message-list__container
+        .chat__main__message-list__container__top
+          .chat__main__message-list__container__top_name
+            %p__name kk
+          .chat__main__message-list__container__top_daytime
+            %p__daytime 2019/11/20(wed) 17:43:34
+        .chat__main__message-list__container__bottom
+          %p__comment 今日は夜から雨
+    .chat__main__message-form
+      .chat__main__message-form__container
+        .chat__main__message-form__container__messages
+          %input.chat__main__message-form__container__messages_space{:placeholder => "type a message", :type => "text"}/
+          .chat__main__message-form__container__messages_iconbox
+            %label{class: "chat__main__message-form__container__messages_icon"}
+              = icon('fas', 'image',class: "chat__main__message-form__container__messages_image fa-2x")
+              %input{type: "file",class: "chat_main__message-form__container__messages_text"}
+        .chat__main__message-form__container__send
+          %p send
+
