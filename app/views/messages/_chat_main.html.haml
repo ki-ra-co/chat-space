@@ -3,37 +3,39 @@
     .chat__main__group-info
       .chat__main__group-info__left
         %h1.chat__main__group-info__left_top
-          test
+          = @group.name
         %p.chat__main__group-info__left_bottom
-          member:kk
+          - @group.users.each do |user|
+            =user.name
       .chat__main__group-info__right
-        %a.chat__main__group-info__right_edit
+        = link_to edit_group_path(@group.id),class:"chat__main__group-info__right_edit" do
           Edit
     .chat__main__message-list
       .chat__main__message-list__container
-        .chat__main__message-list__container__top
-          .chat__main__message-list__container__top_name
-            %p kk
-          .chat__main__message-list__container__top_daytime
-            %p 2019/11/20(wed) 17:43:01
+        -# .chat__main__message-list__container__top
+          -# .chat__main__message-list__container__top_name
+          -#   %p 
+          -# .chat__main__message-list__container__top_daytime
+          -#   %p 
         .chat__main__message-list__container__bottom
-          %p おはよう！
+         
+          = render @messages
       .chat__main__message-list__container
         .chat__main__message-list__container__top
           .chat__main__message-list__container__top_name
-            %p__name kk
+            %p__name 
           .chat__main__message-list__container__top_daytime
-            %p__daytime 2019/11/20(wed) 17:43:34
+            %p__daytime 
         .chat__main__message-list__container__bottom
-          %p__comment 今日は夜から雨
+          %p__comment 
     .chat__main__message-form
       .chat__main__message-form__container
-        .chat__main__message-form__container__messages
-          %input.chat__main__message-form__container__messages_space{:placeholder => "type a message", :type => "text"}/
-          .chat__main__message-form__container__messages_iconbox
-            %label{class: "chat__main__message-form__container__messages_icon"}
-              = icon('fas', 'image',class: "chat__main__message-form__container__messages_image fa-2x")
-              %input{type: "file",class: "chat_main__message-form__container__messages_text"}
-        .chat__main__message-form__container__send
-          %p send
+        = form_for [@group, @message],html:{class:"chat__main__message-form__container__messages"} do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          -# .chat__main__message-form__container__messages_iconbox
+          = f.label :image, class: 'chat__main__message-form__container__messages_icon fa-2x' do
+            = icon('fas', 'image', class: 'chat__main__message-form__container__messages_image')
+            = f.file_field :image, class: 'chat_main__message-form__container__messages_text'
+          = f.submit 'Send', class: 'chat__main__message-form__container__send'
+
 

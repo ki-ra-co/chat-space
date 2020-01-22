@@ -30,7 +30,7 @@ Things you may want to cover:
 ### Association
 - has_many :users_groups
 - has_many :groups, through:  :users_groups
-- has_many :comments
+- has_many :messages
 
 
 
@@ -41,13 +41,13 @@ Things you may want to cover:
 ### Association
 - has_many :users_groups
 - has_many :users, through:  :users_groups
-- has_many :comments
+- has_many :messages
 
 
 
-## commentsテーブル
+## messageテーブル
 |Column|Type|
-|text|text|
+|content|text|
 |image|string|
 |user|references|null: false, foreign_key: true|
 |group|references|null: false, foreign_key: true|
