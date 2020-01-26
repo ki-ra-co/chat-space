@@ -1,10 +1,11 @@
-.chat__main__message-list__top
-  .chat__main__message-list__top_name
-    = message.user.name
-  .chat__main__message-list__top_daytime
-    = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-.chat__main__message-list__bottom
-  - if message.content.present?
-    %p.chat__main__message-list__bottom__content
-      = message.content
-  = image_tag message.image.url, class: 'chat__main__message-list__bottom__image' if message.image.present?
+.chat__main__message-list__container
+  .chat__main__message-list__container__top
+    .chat__main__message-list__container__top_name
+      = message.user.name
+    .chat__main__message-list__container__top_daytime
+      = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .chat__main__message-list__container__bottom
+    - if message.content.present?
+      %p.chat__main__message-list__container__bottom__content
+        = message.content
+    = image_tag message.image.url, class: 'chat__main__message-list__container__bottom__image' if message.image.present?

@@ -2,17 +2,17 @@ $(function(){
   function buildHTML(message){
    if ( message.image ) {
      var html =
-      `<div class="message" data-message-id=${message.id}>
+      `<div class="chat__main__message-list__top" data-message-id=${message.id}>
          <div class="upper-message">
-           <div class="upper-message__user-name">
+           <div class="chat__main__message-list__top_name">
              ${message.user_name}
            </div>
-           <div class="upper-message__date">
+           <div class="chat__main__message-list__top_daytime">
              ${message.created_at}
            </div>
          </div>
-         <div class="lower-message">
-           <p class="lower-message__content">
+         <div class="chat__main__message-list__bottom">
+           <p class="chat__main__message-list__bottom__content">
              ${message.content}
            </p>
          </div>
@@ -21,17 +21,17 @@ $(function(){
      return html;
    } else {
      var html =
-      `<div class="message" data-message-id=${message.id}>
+      `<div class="chat__main__message-list__top" data-message-id=${message.id}>
          <div class="upper-message">
-           <div class="upper-message__user-name">
+           <div class="chat__main__message-list__top_name">
              ${message.user_name}
            </div>
-           <div class="upper-message__date">
+           <div class="chat__main__message-list__top_daytime">
              ${message.created_at}
            </div>
          </div>
-         <div class="lower-message">
-           <p class="lower-message__content">
+         <div class="chat__main__message-list__bottom">
+           <p class="chat__main__message-list__bottom__content">
              ${message.content}
            </p>
          </div>
