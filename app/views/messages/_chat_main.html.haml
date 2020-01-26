@@ -11,28 +11,11 @@
         = link_to edit_group_path(@group.id),class:"chat__main__group-info__right_edit" do
           Edit
     .chat__main__message-list
-      .chat__main__message-list__container
-        -# .chat__main__message-list__container__top
-          -# .chat__main__message-list__container__top_name
-          -#   %p 
-          -# .chat__main__message-list__container__top_daytime
-          -#   %p 
-        .chat__main__message-list__container__bottom
-         
-          = render @messages
-      .chat__main__message-list__container
-        .chat__main__message-list__container__top
-          .chat__main__message-list__container__top_name
-            %p__name 
-          .chat__main__message-list__container__top_daytime
-            %p__daytime 
-        .chat__main__message-list__container__bottom
-          %p__comment 
+      = render @messages
     .chat__main__message-form
       .chat__main__message-form__container
         = form_for [@group, @message],html:{class:"chat__main__message-form__container__messages"} do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-          -# .chat__main__message-form__container__messages_iconbox
           = f.label :image, class: 'chat__main__message-form__container__messages_icon fa-2x' do
             = icon('fas', 'image', class: 'chat__main__message-form__container__messages_image')
             = f.file_field :image, class: 'chat_main__message-form__container__messages_text'
