@@ -10,7 +10,7 @@
       .chat__main__group-info__right
         = link_to edit_group_path(@group.id),class:"chat__main__group-info__right_edit" do
           Edit
-    .chat__main__message-list
+    .chat__main__message-list{data: {group: {id: @group.id}}}
       = render @messages
     .chat__main__message-form
       .chat__main__message-form__container
