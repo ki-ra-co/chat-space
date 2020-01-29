@@ -16,7 +16,6 @@ $(function(){
         $.each(messages, function(i, message) {
           insertHTML += buildHTML(message)
         });
-        //メッセージが入ったHTMLに、入れ物ごと追加
         $('.chat__main__message-list').append(insertHTML);
         $('.chat__main__message-list').animate({ scrollTop: $('.chat__main__message-list')[0].scrollHeight});
         $("#new_message")[0].reset();
@@ -24,7 +23,7 @@ $(function(){
       }
     })
     .fail(function() {
-      console.log('error');
+      window.alert('自動更新が出来ていません');
     });
   };
 
@@ -107,7 +106,6 @@ $('#new_message').on('submit', function(e){
     })
     .done(function(data){
       var html = buildHTML(data);
-      console.log(html)
       $('.chat__main__message-list').append(html);
       $('form')[0].reset();
       $('.chat__main__message-list').animate({ scrollTop: $('.chat__main__message-list')[0].scrollHeight});
