@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = 'kiraco'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/kiraco'
+  config.fog_directory  = 'koki4173'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/koki4173'
 end

@@ -12,7 +12,7 @@
           Edit
     .chat__main__message-list{data: {group: {id: @group.id}}}
       = render @messages
-    .chat__main__message-form
+    .c
       .chat__main__message-form__container
         = form_for [@group, @message],html:{class:"chat__main__message-form__container__messages"} do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'

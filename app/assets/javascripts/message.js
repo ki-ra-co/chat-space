@@ -1,5 +1,92 @@
-$(function(){ 
-   var reloadMessages = function() {
+$(function(){
+
+  function buildHTML(message){
+      if ( message.content && message.image ) {
+        var html =
+        `<div class="chat__main__message-list__container" data-message-id=${message.id}>
+          <div class="chat__main__message-list__container__top" >
+            <div class="chat__main__message-list__container__top_name">
+              ${message.user_name}
+            </div>
+            <div class="chat__main__message-list__container__top_daytime">
+              ${message.created_at}
+            </div>
+          </div>
+          <div class="chat__main__message-list__container__bottom">
+            <p class="chat__main__message-list__container__bottom__content">
+              ${message.content}
+            </p>
+          </div>
+          <div class="chat__main__message-list__container__bottom__image">
+            <img src=${message.image} >
+          </div>
+        </div>`
+        return html;
+      } else if (message.content) {
+        var html =
+        `<div class="chat__main__message-list__container" data-message-id=${message.id}>
+          <div class="chat__main__message-list__container__top" >
+            <div class="chat__main__message-list__container__top_name">
+              ${message.user_name}
+            </div>
+            <div class="chat__main__message-list__container__top_daytime">
+              ${message.created_at}
+            </div>
+          </div>
+          <div class="chat__main__message-list__container__bottom">
+            <p class="chat__main__message-list__container__bottom__content">
+              ${message.content}
+            </p>
+          </div>
+        </div>`
+        return html;
+      } else if (message.image) {
+        var html =
+        `<div class="chat__main__message-list__container" data-message-id=${message.id}>
+          <div class="chat__main__message-list__container__top" >
+            <div class="chat__main__message-list__container__top_name">
+              ${message.user_name}
+            </div>
+            <div class="chat__main__message-list__container__top_daytime">
+              ${message.created_at}
+            </div>
+          </div>
+          <div class="chat__main__message-list__container__bottom">
+            <div class="chat__main__message-list__container__bottom__image">
+            <img src=${message.image} >
+            </div>
+          </div>
+        </div>`
+        return html;
+      }
+  };
+
+$('#new_message').on('submit', function(e){
+    e.preventDefault();
+    var formData = new FormData(this);
+    var url = $(this).attr('action')
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data){
+      var html = buildHTML(data);
+      $('.chat__main__message-list').append(html);
+      $('form')[0].reset();
+      $('.chat__main__message-list').animate({ scrollTop: $('.chat__main__message-list')[0].scrollHeight});
+      $('.chat__main__message-form__container__send').removeAttr('disabled',false);
+    })
+    .fail(function() {
+      alert("メッセージ送信に失敗しました");
+    });
+  });
+
+  var reloadMessages = function() {
+    if (document.location.href.match(/\/groups\/\d+\/messages/)) {
     last_message_id = $('.chat__main__message-list__container:last').data("message-id");
     group_id = $('.chat__main__message-list').data("group-id");
 
@@ -25,95 +112,7 @@ $(function(){
     .fail(function() {
       window.alert('自動更新が出来ていません');
     });
-  };
-
-  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-    setInterval(reloadMessages, 7000);
   }
-
-  function buildHTML(message){
-      if ( message.content && message.image ) {
-        var html =
-        `<div class="chat__main__message-list__container" data-message-id=${message.id}>
-          <div class="chat__main__message-list__top" >
-            <div class="upper-message">
-              <div class="chat__main__message-list__top_name">
-                ${message.user_name}
-              </div>
-              <div class="chat__main__message-list__top_daytime">
-                ${message.created_at}
-              </div>
-            </div>
-            <div class="chat__main__message-list__bottom">
-              <p class="chat__main__message-list__bottom__content">
-                ${message.content}
-              </p>
-            </div>
-            <img src=${message.image} >
-          </div>`
-        return html;
-      } else if (message.content) {
-        var html =
-        `<div class="chat__main__message-list__container" data-message-id=${message.id}>
-          <div class="chat__main__message-list__top" >
-            <div class="upper-message">
-              <div class="chat__main__message-list__top_name">
-                ${message.user_name}
-              </div>
-              <div class="chat__main__message-list__top_daytime">
-                ${message.created_at}
-              </div>
-            </div>
-            <div class="chat__main__message-list__bottom">
-              <p class="chat__main__message-list__bottom__content">
-                ${message.content}
-              </p>
-            </div>
-          </div>`
-        return html;
-      } else if (message.image) {
-        var html =
-        `<div class="chat__main__message-list__container" data-message-id=${message.id}>  
-          <div class="chat__main__message-list__top" >
-            <div class="upper-message">
-              <div class="chat__main__message-list__top_name">
-                ${message.user_name}
-              </div>
-              <div class="chat__main__message-list__top_daytime">
-                ${message.created_at}
-              </div>
-            </div>
-            <div class="chat__main__message-list__bottom">
-              <p class="chat__main__message-list__bottom__content">
-                ${message.image_url}
-              </p>
-            </div>
-          </div>`
-        return html;
-      }
-  };
-$('#new_message').on('submit', function(e){
-    e.preventDefault();
-    var formData = new FormData(this);
-    var url = $(this).attr('action')
-    $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(data){
-      var html = buildHTML(data);
-      $('.chat__main__message-list').append(html);
-      $('form')[0].reset();
-      $('.chat__main__message-list').animate({ scrollTop: $('.chat__main__message-list')[0].scrollHeight});
-      $('.chat__main__message-form__container__send').removeAttr('disabled',false);
-    })
-    .fail(function() {
-      alert("メッセージ送信に失敗しました");
-    });
+}
+    setInterval(reloadMessages, 8000);
 })
-});
-
