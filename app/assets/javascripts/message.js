@@ -85,11 +85,11 @@ $(function(){
             </div>
             <div class="chat__main__message-list__bottom">
               <p class="chat__main__message-list__bottom__content">
-                ${message.image}
+                ${message.image_url}
               </p>
             </div>
           </div>`
-        return html;  
+        return html;
       }
   };
 $('#new_message').on('submit', function(e){
