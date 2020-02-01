@@ -17,8 +17,8 @@
       .chat__main__message-form__container
         = form_for [@group, @message],html:{class:"chat__main__message-form__container__messages"} do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-          = f.label :image, class: 'chat__main__message-form__container__messages_icon fa-2x' do
-            = icon('fas', 'image', class: 'chat__main__message-form__container__messages_image')
+          = f.label :image, class: 'chat__main__message-form__container__messages_icon' do
+            = icon('far', 'image', class: 'chat__main__message-form__container__messages_image fa-lg')
             = f.file_field :image, class: 'chat_main__message-form__container__messages_text'
           = f.submit 'Send', class: 'chat__main__message-form__container__send'
 
