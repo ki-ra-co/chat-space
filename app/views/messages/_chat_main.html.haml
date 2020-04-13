@@ -4,7 +4,7 @@
       .chat__main__group-info__left
         %h1.chat__main__group-info__left_top
           = @group.name
-        %p.chat__main__group-info__left_bottom 
+        %p.chat__main__group-info__left_bottom
           menber:
           - @group.users.each do |user|
             =user.name
